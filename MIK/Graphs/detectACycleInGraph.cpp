@@ -4,15 +4,36 @@ using namespace std;
 
 // } Driver Code Ends
 class Solution {
-    bool dfs(int u, vector<int> adj[], vector<bool>& vis, int parent){
+    bool dfsCycle(int u, vector<int> adj[], vector<bool>& vis, int parent){
         vis[u] = true;
                 
         for(auto& v: adj[u]){
             if(!vis[v]){
                 vis[v] = 1;
-                if(dfs(v, adj, vis, u)) return true;
+                if(dfsCycle(v, adj, vis, u)) return true;
             }
             else if(vis[v] && v != parent) return true;
+        }
+        return false;
+    }
+    bool bfsCycle(int u, int parentNode, vector<int> adj[], vector<bool>& vis){
+        queue<pair<int, int>> q;
+        q.push({u, parentNode});
+        vis[u] = 1;
+        
+        while(!q.empty()){
+            int currNode = q.front().first;
+            int parent = q.front().second;
+            q.pop();
+            
+            for(auto v : adj[currNode]){
+                if(vis[v] && v == parent) continue;
+                if(vis[v] && v != parent) return true;
+                if(!vis[v]){
+                    q.push({v, currNode});
+                    vis[v] = 1;
+                }
+            }
         }
         return false;
     }
@@ -22,11 +43,14 @@ class Solution {
         // Code here
         vector<bool> vis(V, 0);
         
-        for(int i = 0; i < V; i++)
-            if(!vis[i]){
-                if(dfs(i, adj, vis, -1)) return true;
-            }
-    
+        for(int i = 0; i < V; i++){
+            if(!vis[i] && dfsCycle(i, adj, vis, -1)) return true;
+        }
+
+        for(int i = 0; i < V; i++){
+            if(!vis[i] && bfsCycle(i, -1, adj, vis)) return true;
+        }
+
         return false;
     }
 };
