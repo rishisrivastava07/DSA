@@ -4,8 +4,26 @@ using namespace std;
 
 
 // } Driver Code Ends
-//User function Template for C++git
+//User function Template for C++
 class Solution {
+    void bfs(int u, vector<int> adjL[], vector<bool> &vis){
+        queue<int> q;
+        
+        q.push(u);
+        vis[u] = 1;
+        
+        while(!q.empty()){
+            int currNode = q.front();
+            q.pop();
+            
+            for(auto adjecentNodes : adjL[currNode]){
+                if(!vis[adjecentNodes]){
+                    q.push(adjecentNodes);
+                    vis[adjecentNodes] = 1;
+                }
+            }
+        }
+    }
     void dfs(int u, vector<int> adjL[], vector<bool> &vis){
         vis[u] = 1;
         
@@ -31,9 +49,19 @@ class Solution {
         
         vector<bool> vis(V, 0);
         int count = 0;
+
+        // using DFS
         for(int i = 0; i < V; i++){
             if(!vis[i]){
                 dfs(i, adjL, vis);
+                count++;
+            }
+        }
+
+        // using BFS
+        for(int i = 0; i < V; i++){
+            if(!vis[i]){
+                bfs(i, adjL, vis);
                 count++;
             }
         }
