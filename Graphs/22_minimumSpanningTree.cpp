@@ -11,6 +11,7 @@ class Solution
 	
     int spanningTree(int V, vector<vector<int>> adj[])
     {
+        // Using Prim's Algorithm
         // Step - 1 : Make an inMST & parent Vector. Also make a min heap
         vector<bool> inMST(V, false);
         vector<int> parentV(V, -1);
