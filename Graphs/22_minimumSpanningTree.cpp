@@ -109,7 +109,7 @@ class Solution
             parent[i] = i;
         }
         
-        // return kruskalsAlgorithm(vec, parent, rank);   
+        return kruskalsAlgorithm(vec, parent, rank);   
         return primsAlgorithm(V, adj);
     }
 
