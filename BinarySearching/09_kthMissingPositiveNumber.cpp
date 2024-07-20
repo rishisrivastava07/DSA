@@ -11,7 +11,6 @@ public:
             if((arr[mid] - (mid+1)) < k) st = mid + 1;
             else en = mid-1;
         }
-
         return st + k;
     }
 };
