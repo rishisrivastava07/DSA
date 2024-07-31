@@ -35,6 +35,18 @@ public:
         for(int i = 0; i < n; i++){
             reverse(begin(matrix[i]), end(matrix[i]));
         }
+
+        /*
+        //flip vertically - For anticlock wise rotation
+        for(int col = 0; col<N; col++) {
+            int row = 0;
+            int mid = n/2;
+            while(row < mid) {
+                swap(matrix[row][col], matrix[n-row-1][col]);
+                row++;
+            }
+        }
+        */
     }
 };
 
