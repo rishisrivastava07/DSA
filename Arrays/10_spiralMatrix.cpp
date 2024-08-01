@@ -1,3 +1,11 @@
+/*
+    Problem Name : SPIRAL MATRIX
+    Company Tags  :   Paytm, Zoho, Morgan Stanley, Accolite, Amazon, Microsoft, 
+               Snapdeal, D-E-Shaw, MakeMyTrip, Oracle, MAQ Software, 
+               Nearbuy, Nagarro, BrowserStack
+    Leetcode : 54
+*/
+
 #include<bits/stdc++.h>
 using namespace std;
 
@@ -21,7 +29,7 @@ public:
             dir == 2 --> move from left to right
             dir == 3 --> move from bottom to top
         */
-       
+
         while(startCol <= endCol && startRow <= endRow){
             if(dir == 0){
                 for(int i = startCol; i <= endCol; i++){
