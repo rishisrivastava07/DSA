@@ -31,6 +31,35 @@ public:
         }
 
         return result;
+
+        // Approach - 02 : Time Complexity - O(N^2), Space Complexity - O(N)
+        int n = strs.size();
+        unordered_map<string, vector<string>> mp;
+                
+        for(auto& str : strs){
+            vector<int> vec(26, 0);
+            string word = str;
+            for(char& ch : word){
+                vec[ch - 'a']++;
+            }
+
+            string new_word = "";
+            for(int i = 0; i < 26; i++){
+                int freq = vec[i];
+                if(freq > 0){
+                    new_word += string(freq, i + 'a');
+                }
+            }
+
+            mp[new_word].push_back(word);
+        }
+
+        vector<vector<string>> result;
+        for(auto it : mp){
+            result.push_back(it.second);
+        }
+
+        return result;
     }
 };
 
