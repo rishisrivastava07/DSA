@@ -1,10 +1,16 @@
+/*
+    Company Tags : Adobe, Amazon, Hike, MakeMyTrip, MAQ Software, Microsoft, Morgan Stanley,
+    Ola Cabs, OYO Rooms, Paytm, Qualcomm, Samsung, SAP Labs, Snapdeal, Walmart, Yatra.com, Flipkart
+    LeetCode - 1329
+*/
+
 #include<bits/stdc++.h>
 using namespace std;
 
 class Solution {
 public:
     void sortColors(vector<int>& nums) {
-        // Approach - 01 : Time Complexity - O(N) Space Complexity - O(1)
+        // Approach - 01 : Time Complexity - O(N+N) Space Complexity - O(1)
         // Linear Approach
         int countRed = 0, countWhite = 0, countBlue = 0;
 
