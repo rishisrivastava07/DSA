@@ -9,6 +9,7 @@ using namespace std;
 class Solution {
 public:
     vector<int> sumEvenAfterQueries(vector<int>& nums, vector<vector<int>>& queries) {
+        // Time Complexity - O(N^2) Space Complexity - O(N)
         vector<int> result;
         int n = nums.size();
 
